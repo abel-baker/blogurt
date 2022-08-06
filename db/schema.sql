@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS blogurt_db;
+
+CREATE DATABASE blogurt_db;
