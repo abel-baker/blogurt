@@ -1,1 +1,19 @@
-<div>You are on the homepage</div>
+<ol class="post-list">
+  {{#each posts as |post|}}
+  <li>
+    <article class="post">
+      <div class="title">
+        {{post.title}}
+        <span>({{post.created_at}})</span>
+      </div>
+      <div class="meta">
+        {{post.user.username}}
+      </div>
+      <div class="content">
+        {{post.content}}
+        <a href="/">{{post.comments.length}} comment(s)</a>
+      </div>
+    </article>
+  </li>
+  {{/each}}
+</ol>
