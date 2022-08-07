@@ -40,24 +40,10 @@ router.get('/', (req, res) => {
     console.log(err);
     res.status(500).json(err);
   });
+});
 
-  // try {
-  //   res.render('homepage', dbPostData[0]);
-  // } catch (err) {
-  //   console.log(err);
-  //   res.status(500).json(err);
-  // };
-
-  // res.render('homepage', {
-  //   id: 1,
-  //   title: 'Handlebars Rules',
-  //   created_at: new Date(),
-  //   content: 'This is a lengthy lamentation about not having a handlebar mustache',
-  //   comments: [{}, {}],
-  //   user: {
-  //     username: 'test_user',
-  //   }
-  // });
+router.get('/login', (req, res) => {
+  res.render('login');
 });
 
 module.exports = router;
