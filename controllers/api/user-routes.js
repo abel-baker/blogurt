@@ -21,7 +21,13 @@ router.post('/', (req, res) => {
     password: req.body.password
   })
   .then(userData => {
-    req.json(userData);
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.username = userData.username;
+      req.session.loggedIn = true;
+
+      req.json(userData);
+    });
   })
   .catch(err => {
     console.log(err);
@@ -58,5 +64,16 @@ router.post('/login', (req, res) => {
     });
   });
 });
+
+// POST logout
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+})
 
 module.exports = router;
