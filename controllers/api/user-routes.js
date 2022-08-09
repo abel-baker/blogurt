@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
       req.session.username = userData.username;
       req.session.loggedIn = true;
 
-      req.json(userData);
+      res.json(userData);
     });
   })
   .catch(err => {
