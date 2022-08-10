@@ -13,4 +13,13 @@ router.get('/', (req, res) => {
   });
 });
 
+// create post
+router.post('/', (req, res) => {
+  Post.create({
+    title: req.body.title,
+    post_content: req.body.post_content,
+    user_id: req.session.user_id
+  });
+});
+
 module.exports = router;
