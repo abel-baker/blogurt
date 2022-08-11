@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { rest } = require('lodash');
 const { User, Post, Comment } = require('../../models');
 
 // GET all posts
@@ -17,8 +18,13 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   Post.create({
     title: req.body.title,
-    post_content: req.body.post_content,
+    content: req.body.post_content,
     user_id: req.session.user_id
+  })
+  .then(postData => res.json(postData))
+  .catch(err => {
+    console.error(err);
+    res.status(500).json(err);
   });
 });
 
